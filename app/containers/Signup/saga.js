@@ -1,5 +1,6 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import request from 'utils/request';
+import Cookies from 'universal-cookie';
 
 import { SIGN_UP } from './constants'
 import { makeSelectEmail, makeSelectPassword } from './selectors'
@@ -23,8 +24,18 @@ export function* signup() {
         },
         validationData: []  //optional
     })
-    .then(data => console.log(data))
-    .catch(err => console.log(err));  
+    .then(
+        (data) => {
+          console.log(data);
+          const cookies = new Cookies();
+          const accessToken = data.signInUserSession.accessToken.jwtToken;
+          cookies.set('access_token', accessToken, { path: '/' });
+          console.log(cookies.get('access_token'));
+        }
+      )
+    .catch(
+        err => console.log(err)
+      );  
 }
 
 // Individual exports for testing
