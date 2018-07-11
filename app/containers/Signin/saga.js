@@ -22,8 +22,8 @@ export function* signin() {
           console.log('data: ', data);
           const accessToken = data.signInUserSession.accessToken.jwtToken;
           const cookies = new Cookies();
-          cookies.set('access_token', accessToken, { path: '/' });
-          console.log(cookies.get('access_token')); 
+          cookies.set('access-token', accessToken, { path: '/' });
+          console.log(cookies.get('access-token')); 
         }
       )
     .catch(err => console.log(err));  

@@ -29,8 +29,8 @@ export function* signup() {
           console.log(data);
           const cookies = new Cookies();
           const accessToken = data.signInUserSession.accessToken.jwtToken;
-          cookies.set('access_token', accessToken, { path: '/' });
-          console.log(cookies.get('access_token'));
+          cookies.set('access-token', accessToken, { path: '/' });
+          console.log(cookies.get('access-token'));
         }
       )
     .catch(

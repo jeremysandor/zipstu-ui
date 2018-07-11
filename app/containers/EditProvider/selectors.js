@@ -8,6 +8,15 @@ const selectEditProviderDomain = (state) => state.get('editProvider');
 /**
  * Other specific selectors
  */
+ const makeSelectProfileName = () => createSelector(
+  selectEditProviderDomain,
+  (substate) => substate.get('profileName')
+);
+
+const makeSelectHours = () => createSelector(
+  selectEditProviderDomain,
+  (substate) => substate.get('hours')
+);
 
 
 /**
@@ -19,7 +28,9 @@ const makeSelectEditProvider = () => createSelector(
   (substate) => substate.toJS()
 );
 
-export default makeSelectEditProvider;
 export {
   selectEditProviderDomain,
+  makeSelectEditProvider,
+  makeSelectProfileName,
+  makeSelectHours
 };

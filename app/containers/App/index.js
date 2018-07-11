@@ -27,6 +27,7 @@ import VenuePage from 'containers/VenuePage/Loadable';
 import TablePage from 'containers/TablePage/Loadable';
 import Signup from 'containers/Signup/Loadable';
 import Signin from 'containers/Signin/Loadable';
+import Provider from 'containers/EditProvider/Loadable';
 import ForgotPassword from 'containers/ForgotPassword/Loadable';
 import ForgotPasswordSubmit from 'containers/ForgotPasswordSubmit/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -141,6 +142,9 @@ export class App extends React.PureComponent {
                 zipstu
               </Link>                   
             </Typography>
+            <Link to="/provider">
+              <Button>+ List a service</Button>
+            </Link>               
             <Link to="/admin">
               <Button>Admin</Button>
             </Link>                        
@@ -159,6 +163,7 @@ export class App extends React.PureComponent {
            <Route path="/admin" component={TablePage} />
            <Route path="/signup" component={Signup} />
            <Route path="/signin" component={Signin} />
+           <Route path="/provider" component={Provider} />
            <Route path="/password/forgot" component={ForgotPassword} />
            <Route path="/password/submit" component={ForgotPasswordSubmit} />
            <Route path="" component={NotFoundPage} />
