@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import Cookies from 'universal-cookie';
@@ -35,6 +36,9 @@ export function* listService() {
     console.log('provider', provider)
   } catch (err) {
     console.log('err', err);
+
+    // this needs to be based on a 401
+    yield put(push("/signin"))
   }
 }
 

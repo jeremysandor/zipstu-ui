@@ -1,3 +1,4 @@
+import { go, push } from 'react-router-redux';
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import Cookies from 'universal-cookie';
@@ -16,17 +17,25 @@ export function* signin() {
   console.log('EMAIL?', email);
   console.log('PW?', password);
 
-  Auth.signIn(username, password)
+  let authenticated = false;
+  yield Auth.signIn(username, password)
     .then(
         (data) => {
           console.log('data: ', data);
           const accessToken = data.signInUserSession.accessToken.jwtToken;
           const cookies = new Cookies();
           cookies.set('access-token', accessToken, { path: '/' });
-          console.log(cookies.get('access-token')); 
+          console.log(cookies.get('access-token'));
+          authenticated = true;
         }
       )
     .catch(err => console.log(err));  
+
+  // redirects back to the most recent
+  // page in router history
+  if (authenticated) {
+    yield put(go(-1));  
+  }
 }
 
 // Individual exports for testing
