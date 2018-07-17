@@ -168,6 +168,8 @@ export class App extends React.PureComponent {
         <main className={this.props.classes.content}>
           <div className={this.props.classes.toolbar} />
           <Switch>
+           <PrivateRoute path="/provider" component={Provider} authed={this.props.authed} />
+
            <Route exact path="/" component={LandingPage} />
            <Route path="/features" component={FeaturePage} />
            <Route path="/venues" component={VenuePage} />
@@ -177,7 +179,6 @@ export class App extends React.PureComponent {
            <Route path="/password/forgot" component={ForgotPassword} />
            <Route path="/password/submit" component={ForgotPasswordSubmit} />
            <Route path="" component={NotFoundPage} />
-           <PrivateRoute path="/provider" component={Provider} authed={this.props.authed} />
           </Switch>
           <Footer />          
         </main>        
