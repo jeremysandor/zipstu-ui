@@ -3,8 +3,10 @@ import { takeLatest, call, put, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import Cookies from 'universal-cookie';
 
-import { SIGN_IN } from './constants'
-import { makeSelectEmail, makeSelectPassword } from './selectors'
+import { setAuthenticated } from '../App/actions';
+
+import { SIGN_IN } from './constants';
+import { makeSelectEmail, makeSelectPassword } from './selectors';
 
 // auth
 import { Auth } from 'aws-amplify';
@@ -34,7 +36,8 @@ export function* signin() {
   // redirects back to the most recent
   // page in router history
   if (authenticated) {
-    yield put(go(-1));  
+    yield put(setAuthenticated(authenticated))
+    yield put(go(-1));
   }
 }
 

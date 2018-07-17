@@ -21,4 +21,6 @@ export const LOAD_GAMES = 'boilerplate/App/LOAD_GAMES';
 export const LOAD_GAMES_SUCCESS = 'boilerplate/App/LOAD_GAMES_SUCCESS';
 export const LOAD_GAMES_ERROR = 'boilerplate/App/LOAD_GAMES_ERROR';
 
+export const IS_AUTHENTICATED = 'zipstu/App/IS_AUTHENTICATED'
+
 export const DEFAULT_LOCALE = 'en';

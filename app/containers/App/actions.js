@@ -25,7 +25,16 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
+  IS_AUTHENTICATED,
 } from './constants';
+
+export function setAuthenticated(authed) {
+  console.log('setAuthenticated')
+  return {
+    type: IS_AUTHENTICATED,
+    authed,
+  }
+}
 
 
 export function loadSession() {

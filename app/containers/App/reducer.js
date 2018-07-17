@@ -21,6 +21,7 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  IS_AUTHENTICATED,
 } from './constants';
 
 // The initial state of the App
@@ -33,11 +34,15 @@ const initialState = fromJS({
   },
   games: false,
   session: false,
+  authed: false,
 });
 
 function appReducer(state = initialState, action) {
-  console.log('appReducer', action)
+  console.log('appReducer', action, action.type, action.authenticated)
   switch (action.type) {
+    case IS_AUTHENTICATED:
+      return state
+        .set('authed', true)
     case LOAD_SESSION:
       return state
         .set('error', false)
