@@ -43,6 +43,11 @@ const sessionSelector = () => createSelector(
   (globalState) => globalState.get('session')
 );
 
+const authedSelector = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('authed')
+);
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -52,4 +57,5 @@ export {
   makeSelectLocation,
   makeSelectGames,
   sessionSelector,
+  authedSelector,
 };

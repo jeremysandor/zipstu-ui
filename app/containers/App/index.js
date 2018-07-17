@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -34,7 +34,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import {sessionSelector} from './selectors';
+import { sessionSelector, authedSelector } from './selectors';
 import {loadSession} from './actions';
 
 import reducer from './reducer';
@@ -122,6 +122,17 @@ const styles = theme => ({
 });
 
 
+function PrivateRoute ({component: Component, authed: authed, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authed === true
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/signin', state: {from: props.location}}} />}
+    />
+  )
+}  
+
 export class App extends React.PureComponent {
 
   componentDidMount() {
@@ -163,10 +174,10 @@ export class App extends React.PureComponent {
            <Route path="/admin" component={TablePage} />
            <Route path="/signup" component={Signup} />
            <Route path="/signin" component={Signin} />
-           <Route path="/provider" component={Provider} />
            <Route path="/password/forgot" component={ForgotPassword} />
            <Route path="/password/submit" component={ForgotPasswordSubmit} />
            <Route path="" component={NotFoundPage} />
+           <PrivateRoute path="/provider" component={Provider} authed={this.props.authed} />
           </Switch>
           <Footer />          
         </main>        
@@ -178,6 +189,7 @@ export class App extends React.PureComponent {
 App.propTypes = {
   // loggedIn: PropTypes.bool,
   // isAdmin: PropTypes.bool,
+  authed: PropTypes.bool,
   classes: PropTypes.object,
   session: PropTypes.oneOfType([
     PropTypes.object, 
@@ -196,6 +208,7 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   session: sessionSelector(),
+  authed: authedSelector(),
 });
 
 // const withConnect = connect(mapStateToProps, mapDispatchToProps, null, {pure: false});
