@@ -145,7 +145,7 @@ export class App extends React.PureComponent {
 
   render() {
     return (
-      <Grid container className={this.props.classes.root} spacing={16}>
+      <div>
         <AppBar position="absolute" className={this.props.classes.appBar}>
           <Toolbar>
             <Typography variant="title" color="inherit" className={this.props.classes.flex} noWrap>
@@ -182,7 +182,7 @@ export class App extends React.PureComponent {
           </Switch>
           <Footer />          
         </main>        
-      </Grid>
+      </div>
     )
   }
 }

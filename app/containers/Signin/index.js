@@ -20,6 +20,7 @@ import saga from './saga';
 import { signin, changeEmail, changePassword } from './actions'
 
 // material ui
+import Grid from '@material-ui/core/Grid';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 
@@ -32,36 +33,42 @@ export class Signin extends React.PureComponent { // eslint-disable-line react/p
           <meta name="description" content="Description of Signin" />
         </Helmet>
 
-        <div>
-          <form onSubmit={this.props.onSubmitForm}>
-            
-            <label htmlFor="email">
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={6}>
+            <form onSubmit={this.props.onSubmitForm}>
               
-              <TextField
-                autoFocus
-                label="Email"
-                id="email"
-                type="text"
-                value={this.props.email}
-                onChange={this.props.onChangeEmail}
-              />
-            </label><br />
+              <label htmlFor="email">
+                
+                <TextField
+                  autoFocus
+                  label="Email"
+                  id="email"
+                  type="text"
+                  value={this.props.email}
+                  onChange={this.props.onChangeEmail}
+                />
+              </label><br />
 
-            <label htmlFor="password">
-              <TextField
-                label="Password"
-                id="password"
-                type="password"
-                value={this.props.password}
-                onChange={this.props.onChangePassword}
-              />
-            </label><br />           
+              <label htmlFor="password">
+                <TextField
+                  label="Password"
+                  id="password"
+                  type="password"
+                  value={this.props.password}
+                  onChange={this.props.onChangePassword}
+                />
+              </label><br />           
 
-            <Button type="submit" color="primary">
-              Sign In
-            </Button>
-          </form>
-        </div>
+              <Button type="submit" color="primary">
+                Sign In
+              </Button>
+            </form>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <div>Grid item 2</div>
+          </Grid>
+        </Grid>
+
 
       </div>
     );
