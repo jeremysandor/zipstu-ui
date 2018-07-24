@@ -76,7 +76,7 @@ Amplify.configure({
     // OPTIONAL - Configuration for cookie storage
         cookieStorage: {
         // REQUIRED - Cookie domain (only required if cookieStorage is provided)
-            domain: '.app.localhost',
+            domain: '.zipstu-dev.com',
         // OPTIONAL - Cookie path
             path: '/',
         // OPTIONAL - Cookie expiration in days
