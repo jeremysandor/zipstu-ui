@@ -26,13 +26,27 @@ import { listService, changeProfileName, changeHours } from './actions'
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 
+
+/*
+- profile name
+- profile type
+
+- operating hours
+- hourly price
+- minimum booking
+
+- address
+
+- images
+*/
+
 export class EditProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <Helmet>
           <title>List a Service</title>
-          <meta name="description" content="Description of EditProvider" />
+          <meta name="description" content="List a Service" />
         </Helmet>
 
         Just the basics:
@@ -70,6 +84,8 @@ export class EditProvider extends React.PureComponent { // eslint-disable-line r
     );
   }
 }
+
+
 
 EditProvider.propTypes = {
   dispatch: PropTypes.func.isRequired,

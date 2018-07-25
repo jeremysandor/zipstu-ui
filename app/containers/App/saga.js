@@ -2,7 +2,7 @@
  * Gets the repositories of the user from Github
  */
 // import config from '../../../config';
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest, take } from 'redux-saga/effects';
 import { LOAD_SESSION } from './constants';
 import { setAuthenticated, loadSession, sessionLoaded, gameLoadingError } from './actions';
 
@@ -20,40 +20,11 @@ export function* fetchSession() {
   console.log('FETCH SESSION');
   try {
     let session = yield Auth.currentSession();
-    console.log('session', session);    
+    console.log('session', session);
+    yield put.resolve(setAuthenticated(true));
   } catch (err) {
     console.log('err', err);
   }
-
-
-
-
-  // // let requestURL = 'http://localhost:3001/api/session';
-  // let requestURL = 'http://localhost/api/session';
-  // if (process.env.NODE_ENV === 'production') {
-  //   requestURL = 'http://ec2-13-57-176-254.us-west-1.compute.amazonaws.com:3001/api/session';
-  // }
-  // console.log('requestURL', requestURL);
-
-  // try {
-  //   const opts = {
-  //     headers : {
-  //       'Accept'        : 'application/json',
-  //       'Content-Type'  : 'application/json'
-  //     },
-  //     // withCredentials: true
-  //     credentials: 'include'
-  //   }
-
-  //   console.log('OPTS', opts);
-
-  //   // Call our request helper (see 'utils/request')
-  //   const session = yield call(request, requestURL, opts);
-  //   console.log('session', session);
-  //   yield put(sessionLoaded(session));
-  // } catch (err) {
-  //   yield put(gameLoadingError(err));
-  // }
 }
 
 /**

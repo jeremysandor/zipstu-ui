@@ -21,8 +21,8 @@ import { signin, changeEmail, changePassword } from './actions'
 
 // material ui
 import Grid from '@material-ui/core/Grid';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 export class Signin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

@@ -23,7 +23,7 @@ export function* listService() {
       headers : {
         'Accept'        : 'application/json',
         'Content-Type'  : 'application/json',
-        'access-token'  : cookies.get('access-token')
+        'access-token'  : cookies.get('CognitoIdentityServiceProvider.4t5i21eueuj7okn1b99bepo9mq.21e8b1e1-9d06-4f79-8701-6174809ebe43.accessToken')
       },
       body: JSON.stringify({
         data: {
