@@ -34,7 +34,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import { sessionSelector, authedSelector } from './selectors';
+import { sessionSelector, authedSelector, makeSelectLoading } from './selectors';
 import {loadSession} from './actions';
 
 import reducer from './reducer';
@@ -113,6 +113,7 @@ const styles = theme => ({
 
 
 function PrivateRoute ({component: Component, authed: authed, ...rest}) {
+  console.log('privateRoute', authed)
   return (
     <Route
       {...rest}
@@ -127,13 +128,17 @@ export class App extends React.PureComponent {
 
   componentDidMount() {
     console.log('APP componentDidMount', this.props);
-    if (!this.props.authed) {
-      this.props.onLoadSession();
-    }
-
+    this.props.onLoadSession();
   }
 
+
+
   render() {
+    const { loading, authed } = this.props;
+    console.log('loading', loading)
+    console.log('authed', authed)
+    if (loading) return <div>loading...</div>; // Or whatever you want to return when it is loading
+    // if (!loading || !data) return null; // If it is not loading and its not loaded, then return nothing.    
     return (
       <div>
         <AppBar position="absolute" className={this.props.classes.appBar}>
@@ -200,6 +205,7 @@ export function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   session: sessionSelector(),
   authed: authedSelector(),
+  loading: makeSelectLoading(),
 });
 
 // const withConnect = connect(mapStateToProps, mapDispatchToProps, null, {pure: false});

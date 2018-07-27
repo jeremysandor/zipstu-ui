@@ -26,7 +26,7 @@ import {
 
 // The initial state of the App
 const initialState = fromJS({
-  loading: false,
+  loading: true,
   error: false,
   currentUser: false,
   userData: {
@@ -42,14 +42,17 @@ function appReducer(state = initialState, action) {
   switch (action.type) {
     case IS_AUTHENTICATED:
       return state
+        .set('loading', false)
         .set('authed', true)
     case LOAD_SESSION:
       return state
+        .set('loading', true)
         .set('error', false)
-        .set('session', false);
+        .set('authed', false);
     case LOAD_SESSION_SUCCESS:
       return state
-        .set('session', action.session);
+        .set('loading', true)
+        .set('authed', action.session);
     case LOAD_GAMES:
       return state
         .set('loading', true)
