@@ -38,12 +38,12 @@ const initialState = fromJS({
 });
 
 function appReducer(state = initialState, action) {
-  console.log('appReducer', action, action.type, action.authenticated)
+  console.log('appReducer', action, action.type, action.authed)
   switch (action.type) {
     case IS_AUTHENTICATED:
       return state
         .set('loading', false)
-        .set('authed', true)
+        .set('authed', action.authed)
     case LOAD_SESSION:
       return state
         .set('loading', true)

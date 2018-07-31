@@ -150,10 +150,12 @@ export class App extends React.PureComponent {
             </Typography>
             <Link to="/provider">
               <Button>+ List a service</Button>
-            </Link>               
-            <Link to="/admin">
-              <Button>Admin</Button>
-            </Link>                        
+            </Link>
+            { authed &&
+              <Link to="/admin">
+                <Button>Admin</Button>
+              </Link>
+            }                                      
             <Link to="/signin">
               <Button>Sign In</Button>
             </Link>

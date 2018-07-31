@@ -24,6 +24,7 @@ export function* fetchSession() {
     yield put.resolve(setAuthenticated(true));
   } catch (err) {
     console.log('err', err);
+    yield put.resolve(setAuthenticated(false));
   }
 }
 
