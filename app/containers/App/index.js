@@ -10,7 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -21,6 +21,7 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 
 import LandingPage from 'containers/LandingPage/Loadable';
+import Dashboard from 'containers/Dashboard/Loadable';
 import MainPage from 'containers/MainPage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import VenuePage from 'containers/VenuePage/Loadable';
@@ -40,7 +41,7 @@ import {loadSession} from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // material ui
 import { withStyles } from 'material-ui/styles';
@@ -141,6 +142,25 @@ export class App extends React.PureComponent {
     // if (!loading || !data) return null; // If it is not loading and its not loaded, then return nothing.    
     return (
       <div>
+        <main className={this.props.classes.content}>
+          <div className={this.props.classes.toolbar} />
+          <Switch>
+           <PrivateRoute path="/provider" component={Provider} authed={this.props.authed} />
+           <PrivateRoute path="/dashboard" component={Dashboard} authed={this.props.authed} />
+
+           <Route exact path="/" component={LandingPage} />
+           <Route path="/features" component={FeaturePage} />
+           <Route path="/venues" component={VenuePage} />
+           <Route path="/admin" component={TablePage} />
+           <Route path="/signup" component={Signup} />
+           <Route path="/signin" component={Signin} />
+           <Route path="/password/forgot" component={ForgotPassword} />
+           <Route path="/password/submit" component={ForgotPasswordSubmit} />
+           <Route path="" component={NotFoundPage} />
+          </Switch>
+          <Footer />          
+        </main>        
+
         <AppBar position="absolute" className={this.props.classes.appBar}>
           <Toolbar>
             <Typography variant="title" color="inherit" className={this.props.classes.flex} noWrap>
@@ -160,25 +180,7 @@ export class App extends React.PureComponent {
               <Button>Sign In</Button>
             </Link>
           </Toolbar>
-        </AppBar>
-        
-        <main className={this.props.classes.content}>
-          <div className={this.props.classes.toolbar} />
-          <Switch>
-           <PrivateRoute path="/provider" component={Provider} authed={this.props.authed} />
-
-           <Route exact path="/" component={LandingPage} />
-           <Route path="/features" component={FeaturePage} />
-           <Route path="/venues" component={VenuePage} />
-           <Route path="/admin" component={TablePage} />
-           <Route path="/signup" component={Signup} />
-           <Route path="/signin" component={Signin} />
-           <Route path="/password/forgot" component={ForgotPassword} />
-           <Route path="/password/submit" component={ForgotPasswordSubmit} />
-           <Route path="" component={NotFoundPage} />
-          </Switch>
-          <Footer />          
-        </main>        
+        </AppBar>        
       </div>
     )
   }
