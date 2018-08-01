@@ -1,11 +1,17 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const Section = styled.section`
-  margin: 3em auto;
+// const FullHeightCalendar = styled.foo`
+//   min-height: 1000px;
+// `;
 
-  &:first-child {
-    margin-top: 0;
-  }
-`;
+// export default FullHeightCalendar;
+// import BigCalendar from 'react-big-calendar'
 
-export default Section;
+
+// import styled from 'styled-components';
+
+// const Section = styled(BigCalendar)`
+//   min-height: 1000px;
+// `;
+
+// export default Section;

@@ -23,7 +23,10 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
+import CalendarStyle from './CalendarStyle.css'
+
 BigCalendar.momentLocalizer(moment);
+
 
 export class Calendar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
