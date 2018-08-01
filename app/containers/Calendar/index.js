@@ -27,11 +27,25 @@ import CalendarStyle from './CalendarStyle.css'
 
 BigCalendar.momentLocalizer(moment);
 
-
 export class Calendar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    const myEventsList = [{'foo': 'bar'}]
+    const myEventsList = [
+      {
+        allDay: false,
+        startDate: new Date('August 1, 2018 11:00:00'),
+        endDate: new Date('August 1, 2018 11:45:00'),
+        title: 'Booking with Scotty Summers',
+        desc: 'Big conference for important people',
+      },
+      {
+        allDay: true,
+        startDate: new Date('July 31, 2018 11:13:00'),
+        endDate: new Date('July 31, 2018 11:13:00'),
+        title: 'All Day Event',
+        desc: 'Big conference for important people',
+      }
+    ]
 
     return (
       <div>
@@ -45,6 +59,12 @@ export class Calendar extends React.PureComponent { // eslint-disable-line react
           events={myEventsList}
           startAccessor='startDate'
           endAccessor='endDate'
+          // selectable
+          defaultView='week'
+          // step={30}
+          // timeslots={2}
+          // onSelectEvent={event => this.onEventClick(event)}
+          // onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo) }
         />
 
       </div>
