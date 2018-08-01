@@ -21,6 +21,11 @@ import saga from './saga';
 import messages from './messages';
 
 import Calendar from '../Calendar';
+import Account from '../Account'
+
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Button from '@material-ui/core/Button';
 
 export class Dashboard extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -35,7 +40,21 @@ export class Dashboard extends React.PureComponent { // eslint-disable-line reac
         </Helmet>
         <FormattedMessage {...messages.header} />
 
+        <Link to={`${match.url}/account`}>
+          <Button>Account</Button>
+        </Link>
+        <Link to={`${match.url}/calendar`}>
+          <Button>Calendar</Button>
+        </Link>
+        <Link to={`${match.url}/billing`}>
+          <Button>Billing</Button>
+        </Link>        
+        <Link to={`${match.url}/messages`}>
+          <Button>Messages</Button>
+        </Link>                     
+
         <Switch>
+          <Route path={`${match.url}/account`} component={Account} />
           <Route path={`${match.url}/calendar`} component={Calendar} />
         </Switch>
       

@@ -34,7 +34,7 @@ export class Calendar extends React.PureComponent { // eslint-disable-line react
       {
         allDay: false,
         startDate: new Date('August 1, 2018 11:00:00'),
-        endDate: new Date('August 1, 2018 11:45:00'),
+        endDate: new Date('August 1, 2018 13:00:00'),
         title: 'Booking with Scotty Summers',
         desc: 'Big conference for important people',
       },
