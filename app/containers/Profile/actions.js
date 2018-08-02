@@ -7,6 +7,7 @@
 import {
   DEFAULT_ACTION,
   SAVE_PROFILE,
+  FETCH_PROFILE,
   CHANGE_PROFILE_NAME,
   CHANGE_START_HOURS,
   CHANGE_END_HOURS,
@@ -23,6 +24,12 @@ export function defaultAction() {
 export function saveProfile() {
   return {
     type: SAVE_PROFILE,
+  };
+}
+
+export function fetchProfile() {
+  return {
+    type: FETCH_PROFILE,
   };
 }
 

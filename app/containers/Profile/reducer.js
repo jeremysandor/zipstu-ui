@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
   SAVE_PROFILE,
+  FETCH_PROFILE,
   CHANGE_PROFILE_NAME,
   CHANGE_START_HOURS,
   CHANGE_END_HOURS,

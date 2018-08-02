@@ -20,15 +20,20 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-import { saveProfile, changeProfileName, changeStartHours, changeEndHours,
+import { saveProfile, fetchProfile, changeProfileName, changeStartHours, changeEndHours,
          changeHourlyPrice, changeAddress } from './actions'
 
 // material ui
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';         
 
-export class Profile extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class Profile extends React.PureComponent {
+  componentDidMount() {
+    console.log('PROFILE componentDidMount props', this.props)
+    this.props.fetchProfile();
+  }
+
   render() {
     return (
       <div>
@@ -63,7 +68,7 @@ export class Profile extends React.PureComponent { // eslint-disable-line react/
             </label><br />           
 
             <Button type="submit" color="primary">
-              List Service
+              Save Profile
             </Button>
           </form>
         </div>
@@ -93,7 +98,11 @@ function mapDispatchToProps(dispatch) {
       console.log('EVT', evt);
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(saveProfile());
-    },          
+    },
+    fetchProfile: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(fetchProfile());
+    }, 
   };
 }
 
