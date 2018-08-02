@@ -175,7 +175,12 @@ export class App extends React.PureComponent {
               <Link to="/admin">
                 <Button>Admin</Button>
               </Link>
-            }                                      
+            }    
+            { authed &&
+              <Link to="/dashboard/profile">
+                <Button>Dashboard</Button>
+              </Link>
+            }                                                  
             <Link to="/signin">
               <Button>Sign In</Button>
             </Link>

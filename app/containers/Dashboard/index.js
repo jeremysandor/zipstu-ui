@@ -21,7 +21,7 @@ import saga from './saga';
 import messages from './messages';
 
 import Calendar from '../Calendar';
-import Account from '../Account'
+import Profile from '../Profile';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -40,8 +40,8 @@ export class Dashboard extends React.PureComponent { // eslint-disable-line reac
         </Helmet>
         <FormattedMessage {...messages.header} />
 
-        <Link to={`${match.url}/account`}>
-          <Button>Account</Button>
+        <Link to={`${match.url}/profile`}>
+          <Button>Profile</Button>
         </Link>
         <Link to={`${match.url}/calendar`}>
           <Button>Calendar</Button>
@@ -54,7 +54,7 @@ export class Dashboard extends React.PureComponent { // eslint-disable-line reac
         </Link>                     
 
         <Switch>
-          <Route path={`${match.url}/account`} component={Account} />
+          <Route path={`${match.url}/profile`} component={Profile} />
           <Route path={`${match.url}/calendar`} component={Calendar} />
         </Switch>
       
