@@ -22,6 +22,7 @@ import injectSaga from 'utils/injectSaga';
 
 import LandingPage from 'containers/LandingPage/Loadable';
 import Dashboard from 'containers/Dashboard/Loadable';
+import Discover from 'containers/Discover/Loadable';
 import MainPage from 'containers/MainPage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import VenuePage from 'containers/VenuePage/Loadable';
@@ -154,6 +155,7 @@ export class App extends React.PureComponent {
            <Route path="/admin" component={TablePage} />
            <Route path="/signup" component={Signup} />
            <Route path="/signin" component={Signin} />
+           <Route path="/discover" component={Discover} />
            <Route path="/password/forgot" component={ForgotPassword} />
            <Route path="/password/submit" component={ForgotPasswordSubmit} />
            <Route path="" component={NotFoundPage} />
