@@ -48,14 +48,13 @@ export class Profile extends React.PureComponent {
             
             <label htmlFor="profileName">
               <TextField
-                autoFocus
                 id="profileName"
                 type="text"
                 label="Profile Name"
                 value={this.props.profileName}
                 onChange={this.props.onChangeProfileName}
               />
-            </label><br />
+            </label><br /><br />
 
             <label htmlFor="startHours">
               <TextField
@@ -87,6 +86,8 @@ Profile.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   profile: makeSelectProfile(),
+  profileName: makeSelectProfileName(),
+  startHours: makeSelectStartHours(),
 });
 
 function mapDispatchToProps(dispatch) {

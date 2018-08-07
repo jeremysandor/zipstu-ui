@@ -3,8 +3,9 @@ import { takeLatest, call, put, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import Cookies from 'universal-cookie';
 
-import { SAVE_PROFILE, FETCH_PROFILE } from './constants'
-import { makeSelectProfileName, makeSelectStartHours, makeSelectEndHours, makeSelectHourlyPrice, makeSelectChangeAddress } from './selectors'
+import { SAVE_PROFILE, FETCH_PROFILE } from './constants';
+import { makeSelectProfileName, makeSelectStartHours, makeSelectEndHours, makeSelectHourlyPrice, makeSelectChangeAddress } from './selectors';
+import { fetchProfileSuccess } from './actions';
 
 export function* saveProfile() {
   const cookies = new Cookies();
@@ -34,6 +35,7 @@ export function* saveProfile() {
     }
     const provider = yield call(request, requestURL, opts);
     console.log('provider', provider)
+
   } catch (err) {
     console.log('err', err);
   }
@@ -62,6 +64,7 @@ export function* fetchProfile() {
     }
     const provider = yield call(request, requestURL, opts);
     console.log('provider???', provider)
+    yield put(fetchProfileSuccess(provider.data))
   } catch (err) {
     console.log('err', err);
   }

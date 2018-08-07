@@ -169,7 +169,7 @@ export class App extends React.PureComponent {
               </Link>                   
             </Typography>
             <Link to="/provider">
-              <Button>+ List a service</Button>
+              <Button>+ Add a Profile</Button>
             </Link>
             { authed &&
               <Link to="/admin">

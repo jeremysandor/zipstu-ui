@@ -9,6 +9,7 @@ import {
   DEFAULT_ACTION,
   SAVE_PROFILE,
   FETCH_PROFILE,
+  FETCH_PROFILE_SUCCESS,
   CHANGE_PROFILE_NAME,
   CHANGE_START_HOURS,
   CHANGE_END_HOURS,
@@ -16,12 +17,19 @@ import {
   CHANGE_ADDRESS,   
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  profileName: '',
+  startHours: ''
+});
 
 function profileReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
+    case FETCH_PROFILE_SUCCESS:
+      return state
+        .set('profileName', action.profileName)
+        .set('startHours', action.startHours)
     case CHANGE_PROFILE_NAME:
       return state
         .set('profileName', action.profileName)
