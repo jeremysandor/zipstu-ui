@@ -19,7 +19,8 @@ import {
 
 const initialState = fromJS({
   profileName: '',
-  startHours: ''
+  startHours: '',
+  address: '',
 });
 
 function profileReducer(state = initialState, action) {
@@ -44,7 +45,7 @@ function profileReducer(state = initialState, action) {
         .set('hourlyPrice', action.hourlyPrice)
     case CHANGE_ADDRESS:
       return state
-        .set('changeAddress', action.changeAddress)    
+        .set('address', action.address)
     default:
       return state;
   }

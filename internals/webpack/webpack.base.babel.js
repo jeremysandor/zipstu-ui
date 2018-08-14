@@ -99,7 +99,8 @@ module.exports = (options) => ({
         AWS_IDENTITY_POOL_ID: JSON.stringify(process.env.AWS_IDENTITY_POOL_ID),
         AWS_REGION: JSON.stringify(process.env.AWS_REGION),
         AWS_USER_POOL_ID: JSON.stringify(process.env.AWS_USER_POOL_ID),
-        AWS_USER_POOL_WEB_CLIENT_ID: JSON.stringify(process.env.AWS_USER_POOL_WEB_CLIENT_ID)
+        AWS_USER_POOL_WEB_CLIENT_ID: JSON.stringify(process.env.AWS_USER_POOL_WEB_CLIENT_ID),
+        GOOGLE_PLACES_API_KEY: JSON.stringify(process.env.GOOGLE_PLACES_API_KEY)
       },
     }),
     new webpack.NamedModulesPlugin(),

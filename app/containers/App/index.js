@@ -129,7 +129,13 @@ function PrivateRoute ({component: Component, authed: authed, ...rest}) {
 export class App extends React.PureComponent {
 
   componentDidMount() {
-    console.log('APP componentDidMount', this.props);
+    // append script tag to document head for google places api
+    const script = document.createElement('script');
+    script.type = "text/javascript"
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API_KEY}&libraries=places`;
+    document.head.append(script);
+
+    // load session auth info
     this.props.onLoadSession();
   }
 

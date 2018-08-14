@@ -31,7 +31,7 @@ const makeSelectHourlyPrice = () => createSelector(
 
 const makeSelectChangeAddress = () => createSelector(
   selectProfileDomain,
-  (substate) => substate.get('changeAddress')
+  (substate) => substate.get('address')
 );
 
 /**

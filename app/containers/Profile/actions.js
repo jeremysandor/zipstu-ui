@@ -72,9 +72,9 @@ export function changeHourlyPrice(hourlyPrice) {
   };
 }
 
-export function changeAddress(changeAddress) {
+export function changeAddress(address) {
   return {
     type: CHANGE_ADDRESS,
-    changeAddress
+    address
   };
 }
