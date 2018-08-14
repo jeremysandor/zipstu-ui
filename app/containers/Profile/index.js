@@ -33,6 +33,10 @@ import PlacesAutocomplete, {
 // material ui
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';         
 
 export class Profile extends React.PureComponent {
@@ -82,7 +86,8 @@ export class Profile extends React.PureComponent {
             >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
-                  <input
+                  <TextField
+                    label="Address"
                     {...getInputProps({
                       placeholder: 'Search Places ...',
                       className: 'location-search-input',
