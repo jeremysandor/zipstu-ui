@@ -14,13 +14,15 @@ import {
   CHANGE_START_HOURS,
   CHANGE_END_HOURS,
   CHANGE_HOURLY_PRICE,
-  CHANGE_ADDRESS,   
+  CHANGE_ADDRESS,
+  GEOCODE_ADDRESS,
 } from './constants';
 
 const initialState = fromJS({
   profileName: '',
   startHours: '',
   address: '',
+  latLong: {},
 });
 
 function profileReducer(state = initialState, action) {
@@ -31,6 +33,7 @@ function profileReducer(state = initialState, action) {
       return state
         .set('profileName', action.profileName)
         .set('startHours', action.startHours)
+        .set('address', action.address)
     case CHANGE_PROFILE_NAME:
       return state
         .set('profileName', action.profileName)
@@ -46,6 +49,9 @@ function profileReducer(state = initialState, action) {
     case CHANGE_ADDRESS:
       return state
         .set('address', action.address)
+    case GEOCODE_ADDRESS:
+      return state
+        .set('latLong', action.latLong)
     default:
       return state;
   }

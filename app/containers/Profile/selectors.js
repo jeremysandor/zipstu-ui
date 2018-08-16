@@ -34,6 +34,11 @@ const makeSelectChangeAddress = () => createSelector(
   (substate) => substate.get('address')
 );
 
+const makeSelectGeocodeAddress = () => createSelector(
+  selectProfileDomain,
+  (substate) => substate.get('latLong')
+);
+
 /**
  * Default selector used by Profile
  */
@@ -52,4 +57,5 @@ export {
   makeSelectEndHours,
   makeSelectHourlyPrice,
   makeSelectChangeAddress,
+  makeSelectGeocodeAddress,
 };

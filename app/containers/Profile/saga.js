@@ -4,16 +4,22 @@ import request from 'utils/request';
 import Cookies from 'universal-cookie';
 
 import { SAVE_PROFILE, FETCH_PROFILE } from './constants';
-import { makeSelectProfileName, makeSelectStartHours, makeSelectEndHours, makeSelectHourlyPrice, makeSelectChangeAddress } from './selectors';
-import { fetchProfileSuccess } from './actions';
+import { makeSelectProfileName, makeSelectStartHours, makeSelectEndHours, makeSelectHourlyPrice, 
+         makeSelectChangeAddress, makeSelectGeocodeAddress } from './selectors';
+import { fetchProfileSuccess, changeAddress } from './actions';
 
 export function* saveProfile() {
   const cookies = new Cookies();
   const profileName = yield select(makeSelectProfileName());
   const startHours = yield select(makeSelectStartHours());
+  const address = yield select(makeSelectChangeAddress());
+  const latLng = yield select(makeSelectGeocodeAddress());
 
   console.log('profileName', profileName)
   console.log('startHours', startHours)
+  console.log('address', address)
+  console.log('latLng', latLng)
+
 
   // let requestURL = `http://${process.env.WEB_SERVICE_HOST}:${process.env.WEB_SERVICE_PORT}/v1/providers`
   let requestURL = `http://${process.env.WEB_SERVICE_HOST}/v1/providers`
@@ -30,6 +36,8 @@ export function* saveProfile() {
         data: {
           profileName: profileName,
           startHours: startHours,
+          address: address,
+          latLng: latLng
         }
       })
     }

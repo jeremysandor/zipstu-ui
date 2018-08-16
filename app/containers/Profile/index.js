@@ -15,13 +15,13 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectProfile, makeSelectProfileName, makeSelectStartHours, makeSelectEndHours, 
-         makeSelectHourlyPrice, makeSelectChangeAddress } from './selectors'
+         makeSelectHourlyPrice, makeSelectChangeAddress, makeSelectGeocodeAddress } from './selectors'
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
 import { saveProfile, fetchProfile, changeProfileName, changeStartHours, changeEndHours,
-         changeHourlyPrice, changeAddress } from './actions'
+         changeHourlyPrice, changeAddress, changeLatLong } from './actions'
 
 // Google maps autocomplete 
 import PlacesAutocomplete, {
@@ -88,6 +88,7 @@ export class Profile extends React.PureComponent {
                 <div>
                   <TextField
                     label="Address"
+                    // value={this.props.address}
                     {...getInputProps({
                       placeholder: 'Search Places ...',
                       className: 'location-search-input',
@@ -138,6 +139,7 @@ Profile.propTypes = {
   profileName: PropTypes.string,
   startHours: PropTypes.string,
   address: PropTypes.string,
+  latLong: PropTypes.object
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -145,6 +147,7 @@ const mapStateToProps = createStructuredSelector({
   profileName: makeSelectProfileName(),
   startHours: makeSelectStartHours(),
   address: makeSelectChangeAddress(),
+  latLong: makeSelectGeocodeAddress(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -155,9 +158,14 @@ function mapDispatchToProps(dispatch) {
     onChangeAddress: (value) =>  {
       dispatch(changeAddress(value));
     },
-    onSelectAddress: (value) =>  {
+    onSelectAddress: async (value) =>  {
       console.log('onSelectAddress', value)
-
+      dispatch(changeAddress(value));
+      const results = await geocodeByAddress(value);
+      console.log('results', results);
+      const latLng = await getLatLng(results[0]);
+      console.log('latLng', latLng);
+      dispatch(changeLatLong(latLng));
     },    
     onSubmitForm: (evt) => {
       console.log('EVT', evt);

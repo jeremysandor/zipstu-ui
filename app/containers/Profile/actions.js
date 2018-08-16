@@ -13,7 +13,8 @@ import {
   CHANGE_START_HOURS,
   CHANGE_END_HOURS,
   CHANGE_HOURLY_PRICE,
-  CHANGE_ADDRESS,  
+  CHANGE_ADDRESS,
+  GEOCODE_ADDRESS,
 } from './constants';
 
 export function defaultAction() {
@@ -36,11 +37,12 @@ export function fetchProfile() {
 
 export function fetchProfileSuccess(profileData) {
   console.log('profileData', profileData)
-  const {profileName, startHours} = profileData;
+  const {profileName, startHours, address} = profileData;
   return {
     type: FETCH_PROFILE_SUCCESS,
     profileName,
-    startHours
+    startHours,
+    address
   };
 }
 
@@ -78,3 +80,19 @@ export function changeAddress(address) {
     address
   };
 }
+
+export function changeLatLong(latLong) {
+  return {
+    type: GEOCODE_ADDRESS,
+    latLong
+  };
+}
+
+
+
+
+
+
+
+
+
