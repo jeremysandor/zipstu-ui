@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="120x120" href="/icon-120x120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="167x167" href="/icon-167x167.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">  
 
     <link rel="icon" href="/favicon.ico" />
     <title>Find Music Studios, Producers & Engineers - Zipstu</title>
@@ -29,6 +29,17 @@
     <div id="app"></div>
     <!-- Open Sans Font -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+    <script>
+        window.initMap = function() {
+            window.initOne && window.initOne();
+            window.initTwo && window.initTwo();
+        }
+    </script>    
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATESD_IHdcZJk2Me0Upem1Kz9n8M5w9x4&libraries=places&callback=initMap">
+    </script>      
     
     <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically includes all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this HTML file. Don't add any assets here! (Check out the webpack config files in internals/webpack for details) -->
   </body>

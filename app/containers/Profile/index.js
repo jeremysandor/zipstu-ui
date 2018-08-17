@@ -83,6 +83,7 @@ export class Profile extends React.PureComponent {
               value={this.props.address}
               onChange={this.props.onChangeAddress}
               onSelect={this.props.onSelectAddress}
+              googleCallbackName="initOne"
             >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
