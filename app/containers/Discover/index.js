@@ -25,9 +25,11 @@ import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 const MyMapComponent = withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultCenter={{ lat: 37.8044, lng: -122.2711 }}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+    {console.log('props', props)}
+    {props.isMarkerShown && <Marker position={{ lat: 37.8044, lng: -122.2711 }} />}
+    {props.isMarkerShown && <Marker position={{ lat: 37.8044, lng: -121.2711 }} />}
   </GoogleMap>
 )
 
@@ -44,10 +46,11 @@ export class Discover extends React.PureComponent { // eslint-disable-line react
         </Helmet>
         <FormattedMessage {...messages.header} />
 
-        <MyMapComponent 
+        <MyMapComponent
+          foo={['bar', 'baz']} 
           isMarkerShown 
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
+          containerElement={<div style={{ height: `700px` }} />}
           mapElement={<div style={{ height: `100%` }} />}          
         />
 
