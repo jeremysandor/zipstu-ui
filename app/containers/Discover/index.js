@@ -26,6 +26,7 @@ const MyMapComponent = withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={8}
     defaultCenter={{ lat: 37.8044, lng: -122.2711 }}
+    onDragEnd={props.onDragEnd}
   >
     {console.log('props', props)}
     {props.isMarkerShown && <Marker position={{ lat: 37.8044, lng: -122.2711 }} />}
@@ -35,8 +36,13 @@ const MyMapComponent = withGoogleMap((props) =>
 
 export class Discover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   
+  handleMapDrag() {
+    console.log('handleMapDrag', this);
+    const center = this.getCenter();
+    console.log('center', center.lat(), center.lng());
+  }
+ 
   render() {
-    // const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_PLACES_API_KEY}v=3.exp&libraries=places`
 
     return (
       <div>
@@ -51,7 +57,9 @@ export class Discover extends React.PureComponent { // eslint-disable-line react
           isMarkerShown 
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `700px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}          
+          mapElement={<div style={{ height: `100%` }} />}   
+          // onMapLoad={this.handleMapLoad()} 
+          onDragEnd={this.handleMapDrag}
         />
 
       </div>
