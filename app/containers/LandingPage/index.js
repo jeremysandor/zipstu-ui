@@ -12,6 +12,8 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
+
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectLandingPage from './selectors';
@@ -24,10 +26,6 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-
-// import GridList from '@material-ui/core/GridList';
-// import GridListTile from '@material-ui/core/GridListTile';
-// import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
@@ -82,6 +80,10 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
 
         <Grid container spacing={24}>
           <Grid item xs={12} sm={4}>
+
+            <Link to="/discover">
+              <Button>discover</Button>
+            </Link>                    
             
             <Card className={this.props.classes.card}>
               <CardHeader

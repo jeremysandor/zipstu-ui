@@ -14,13 +14,18 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectDiscover from './selectors';
+import { makeSelectDiscover } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
+import { fetchProfiles } from './actions';
+
 // google map
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+
+// material ui
+import Grid from '@material-ui/core/Grid';
 
 const MyMapComponent = withGoogleMap((props) =>
   <GoogleMap
@@ -35,11 +40,23 @@ const MyMapComponent = withGoogleMap((props) =>
 )
 
 export class Discover extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  
+  componentDidMount() {
+    console.log('DISCOVER componentDidMount props', this.props)
+    this.props.fetchProfiles();
+  }
+
   handleMapDrag() {
     console.log('handleMapDrag', this);
     const center = this.getCenter();
     console.log('center', center.lat(), center.lng());
+    const bounds = this.getBounds();
+    console.log('bounds', bounds);
+
+    console.log('this.props', this);
+    // this.props.history.push({
+    //   pathname: this.props.history.location.pathname,
+    //   search: `?tags=${ selectedTags }`      
+    // })
   }
  
   render() {
@@ -52,15 +69,24 @@ export class Discover extends React.PureComponent { // eslint-disable-line react
         </Helmet>
         <FormattedMessage {...messages.header} />
 
-        <MyMapComponent
-          foo={['bar', 'baz']} 
-          isMarkerShown 
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `700px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}   
-          // onMapLoad={this.handleMapLoad()} 
-          onDragEnd={this.handleMapDrag}
-        />
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={6}>
+            Grid item 1
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <MyMapComponent
+              foo={['bar', 'baz']} 
+              isMarkerShown 
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `700px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}   
+              // onMapLoad={this.handleMapLoad()} 
+              onDragEnd={this.handleMapDrag}
+            />
+          </Grid>          
+        </Grid>        
+
+
 
       </div>
     );
@@ -78,6 +104,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    fetchProfiles: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(fetchProfiles());
+    },     
   };
 }
 

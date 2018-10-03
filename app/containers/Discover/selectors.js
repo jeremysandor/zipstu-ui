@@ -9,6 +9,8 @@ const selectDiscoverDomain = (state) => state.get('discover');
  * Other specific selectors
  */
 
+ 
+
 
 /**
  * Default selector used by Discover
@@ -19,7 +21,8 @@ const makeSelectDiscover = () => createSelector(
   (substate) => substate.toJS()
 );
 
-export default makeSelectDiscover;
+// export default makeSelectDiscover;
 export {
+  makeSelectDiscover,
   selectDiscoverDomain,
 };
