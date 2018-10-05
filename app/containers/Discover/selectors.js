@@ -9,7 +9,15 @@ const selectDiscoverDomain = (state) => state.get('discover');
  * Other specific selectors
  */
 
- 
+const makeSelectLoading = () => createSelector(
+  selectDiscoverDomain,
+  (substate) => substate.get('loading')
+); 
+
+const makeSelectProfiles = () => createSelector(
+  selectDiscoverDomain,
+  (substate) => substate.get('profilesData')  
+);
 
 
 /**
@@ -25,4 +33,6 @@ const makeSelectDiscover = () => createSelector(
 export {
   makeSelectDiscover,
   selectDiscoverDomain,
+  makeSelectLoading,
+  makeSelectProfiles,
 };
