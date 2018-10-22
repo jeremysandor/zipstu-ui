@@ -64,93 +64,53 @@ export class TablePage extends React.PureComponent { // eslint-disable-line reac
   }
 
   render() {
-    console.log('TABLE PROPS', this.props)
-    const { loading, error, games } = this.props;
-    const gamesListProps = {
-      loading,
-      error,
-      games,
-    };
+    // console.log('TABLE PROPS', this.props)
+    // const { loading, error, games } = this.props;
+    // const gamesListProps = {
+    //   loading,
+    //   error,
+    //   games,
+    // };
 
 
     return (
       <article>
         <Helmet>
-          <title>Admin</title>
-          <meta name="description" content="Admin Page" />
+          <title>FAQ</title>
+          <meta name="description" content="FAQ Page" />
         </Helmet>
         <div>
-          <Section>
-            <Form onSubmit={this.props.onSubmitForm}>
+          <section>
+            <h1>Frequently Asked Questions</h1>
+            <h5>Q: Are artist allowed to book more than one session in a day?</h5>
+            <p>Yes, artist are allowed to book unlimited sessions as long as they meet the requirements of the engineer who they are booking with.</p>
+            <h5>Q: As a sound engineer using Zipstu can we allow depoisits as a requirement to book?</h5>
+             <p>In order to protect our clients from fraduatalant behavior depoisits are required in order to book.</p>
+            <h5>Q: Can artist use anything other than credit cards to book a session?</h5>
+            <p>The only options that are availiable are credit/debit cards</p>
+            <h5>Q: Is there any punishment if an artist does not show up to a booked session?</h5>
+            <p>All artist are required to place a card on file, so if any booking session is cancelled/or missed the deposit will be taken </p>
+            
+          </section>
+          {/* <Section> */}
+            {/* <Form onSubmit={this.props.onSubmitForm}> */}
               
-              <label htmlFor="homeTeam">
+              {/* <label htmlFor="homeTeam">
                 <Input
                   id="homeTeam"
                   type="text"
-                  placeholder="Home"
-                  value={this.props.homeTeam}
-                  onChange={this.props.onChangeHomeTeam}
+                  placeholder="Frequently Asked Questions"
+                  // value={this.props.homeTeam}
+                  // onChange={this.props.onChangeHomeTeam}
                 />
-              </label>              
-
-              <label htmlFor="awayTeam">
-                <Input
-                  id="awayTeam"
-                  type="text"
-                  placeholder="Away"
-                  value={this.props.awayTeam}
-                  onChange={this.props.onChangeAwayTeam}
-                />
-              </label>
-
-              <label htmlFor="line">
-                <Input
-                  id="line"
-                  type="text"
-                  placeholder="Line"
-                  value={this.props.line}
-                  onChange={this.props.onChangeLine}
-                />
-              </label>        
-
-              <label htmlFor="total">
-                <Input
-                  id="total"
-                  type="text"
-                  placeholder="Total"
-                  value={this.props.total}
-                  onChange={this.props.onChangeTotal}
-                />
-              </label>     
-
-              <label htmlFor="side">
-                <Input
-                  id="side"
-                  type="text"
-                  placeholder="Side"
-                  value={this.props.side}
-                  onChange={this.props.onChangeSide}
-                />
-              </label>                    
-
-              <label htmlFor="date">
-                <Input
-                  id="date"
-                  type="text"
-                  placeholder="2018-01-12 10:00:00"
-                  value={this.props.date}
-                  onChange={this.props.onChangeDate}
-                />
-              </label>  
-
-
-              <Button type="submit" color="primary">
+              </label>               */}
+              {/* <Button type="submit" color="primary">
                 Save
               </Button>
-            </Form>
+            </Form> */}
 
-            <GamesList {...gamesListProps} />
-          </Section>
+            {/* <GamesList {...gamesListProps} /> */}
+          {/* </Section> */}
         </div>
       </article>
     );

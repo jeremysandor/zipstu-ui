@@ -184,6 +184,9 @@ export class App extends React.PureComponent {
             <Link to="/signin">
               <Button>Sign In</Button>
             </Link>
+            <Link to="/admin">
+              <Button>+ FAQ</Button>
+            </Link>
           </Toolbar>
         </AppBar>        
       </div>
